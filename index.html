@@ -1,0 +1,144 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#0F3C65">
+  <title>Блик — мойка без очереди в Астане</title>
+  <meta name="description" content="Блик показывает, где в Астане свободны боксы прямо сейчас. Бронируйте время или вставайте в онлайн-очередь и приезжайте, когда бокс ваш.">
+  <link rel="icon" href="logo-mark.svg" type="image/svg+xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Unbounded:wght@400;500;600&display=swap">
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="landing.css">
+</head>
+<body>
+  <header class="L-nav">
+    <a class="brand" href="index.html"><img src="logo-mark.svg" alt="">блик</a>
+    <nav>
+      <a href="#why">Почему Блик</a>
+      <a href="#how">Как это работает</a>
+      <a href="#offers">Спецпредложения</a>
+      <a href="business.html">Для моек</a>
+      <a href="app.html#/my">Моя запись</a>
+    </nav>
+    <a class="btn hot" href="app.html">Найти мойку</a>
+  </header>
+
+  <section class="L-hero" aria-label="Блик">
+    <video class="L-video" autoplay muted loop playsinline preload="auto" poster="media/hero-foam.jpg" aria-hidden="true">
+      <source src="media/hero-foam.mp4" type="video/mp4">
+    </video>
+    <div class="L-hero-cta"><span class="tag">Астана</span><span class="tag">Онлайн-очередь и бронь боксов</span></div>
+    <span class="L-bubble" style="width:70px;height:70px;left:12%;top:22%"></span>
+    <span class="L-bubble" style="width:34px;height:34px;left:30%;top:12%;animation-delay:-2s"></span>
+    <span class="L-bubble" style="width:24px;height:24px;right:8%;top:30%;animation-delay:-1s"></span>
+    <h1 class="L-word">блик</h1>
+  </section>
+
+  <main class="L-wrap" style="max-width:1240px;padding-bottom:0">
+    <section class="L-intro">
+      <div>
+        <p class="L-label">Привет, мы — Блик!</p>
+        <h1>Мойка без очереди. Видно заранее, где свободно.</h1>
+      </div>
+      <div style="display:grid;gap:22px">
+        <p>Блик показывает, сколько боксов свободно прямо сейчас на мойках Астаны и сколько придётся ждать. Встаньте в онлайн-очередь или забронируйте время — и приезжайте, когда бокс уже ваш.</p>
+        <div class="row"><a class="btn hot" href="app.html">Найти мойку рядом</a><a class="btn" href="#how">Как это работает</a></div>
+        <div class="L-stats" id="stats"></div>
+      </div>
+    </section>
+
+    <section class="L-reel" aria-label="Видео">
+      <figure class="tall"><video muted loop playsinline preload="none" poster="media/glass-v.jpg" data-lazy><source src="media/glass-v.mp4" type="video/mp4"></video></figure>
+      <figure><video muted loop playsinline preload="none" poster="media/brush.jpg" data-lazy><source src="media/brush.mp4" type="video/mp4"></video>
+        <figcaption>Пена, щётка, вода — когда бокс ваш</figcaption></figure>
+      <figure><video muted loop playsinline preload="none" poster="media/emblem.jpg" data-lazy><source src="media/emblem.mp4" type="video/mp4"></video></figure>
+      <figure class="tall"><video muted loop playsinline preload="none" poster="media/wheel-v.jpg" data-lazy><source src="media/wheel-v.mp4" type="video/mp4"></video>
+        <figcaption>Без ожидания на въезде</figcaption></figure>
+    </section>
+
+    <section id="why">
+      <p class="L-label">Почему Блик</p>
+      <div class="L-why">
+        <article><div class="ico"><svg viewBox="0 0 48 48" aria-hidden="true"><circle cx="18" cy="28" r="12" fill="#C4DAE8" stroke="#0F3C65" stroke-width="2"/><circle cx="33" cy="17" r="8" fill="#fff" stroke="#0F3C65" stroke-width="2"/><circle cx="35" cy="34" r="5" fill="#FFF2BA" stroke="#0F3C65" stroke-width="2"/><path d="M12 24a6 6 0 0 1 6-6" stroke="#fff" stroke-width="2.5" fill="none" stroke-linecap="round"/></svg></div><div><h3>Без очереди</h3><p>Не нужно ехать наугад и стоять за другими машинами. Очередь — в телефоне, а не на въезде.</p></div></article>
+        <article><div class="ico"><svg viewBox="0 0 48 48" aria-hidden="true"><path d="M24 5c7 10 13 17 13 25a13 13 0 0 1-26 0c0-8 6-15 13-25z" fill="#C4DAE8" stroke="#0F3C65" stroke-width="2" stroke-linejoin="round"/><path d="M17 31a7 7 0 0 0 7 7" stroke="#fff" stroke-width="3" fill="none" stroke-linecap="round"/></svg></div><div><h3>Честная загрузка</h3><p>Свободные боксы, прогноз ожидания и время заезда с учётом дороги. Нет связи с мойкой — так и пишем.</p></div></article>
+        <article><div class="ico"><svg viewBox="0 0 48 48" aria-hidden="true"><rect x="6" y="16" width="36" height="22" rx="7" fill="#FFF2BA" stroke="#0F3C65" stroke-width="2"/><path d="M6 25h36" stroke="#0F3C65" stroke-width="2"/><circle cx="14" cy="31" r="1.8" fill="#C8470F"/><circle cx="22" cy="33" r="1.4" fill="#C8470F"/><circle cx="30" cy="30" r="1.8" fill="#C8470F"/><circle cx="36" cy="33" r="1.2" fill="#C8470F"/><circle cx="14" cy="11" r="4" fill="#fff" stroke="#C4DAE8" stroke-width="2"/><circle cx="24" cy="8" r="2.5" fill="#fff" stroke="#C4DAE8" stroke-width="2"/></svg></div><div><h3>Просто оплатить</h3><p>Предоплата через Kaspi засчитывается в стоимость мойки. Отмена заранее — возврат.</p></div></article>
+      </div>
+    </section>
+  </main>
+
+  <section class="L-block aqua" id="how">
+    <div class="L-wrap L-how">
+      <div class="sticky">
+        <p class="L-label">Как это работает</p>
+        <h2 class="L-h2">Четыре шага от «надо помыть» до чистой машины</h2>
+        <p class="big">Главное правило Блика: в бокс заезжают только по брони или по вызову из очереди. Так никто не займёт ваше место, пока вы в пути.</p>
+        <a class="btn primary" href="app.html">Попробовать</a>
+        <div class="L-vcard"><video muted loop playsinline preload="none" poster="media/bay-rinse.jpg" data-lazy><source src="media/bay-rinse.mp4" type="video/mp4"></video>
+          <span>Бокс 3 — ваш. Отсчёт с момента заезда</span></div>
+      </div>
+      <ol class="L-steps">
+        <li><span class="n">1</span><div><h4>Выберите мойку</h4><p>На карте и в списке видно свободные боксы, ожидание, цены, рейтинг и отзывы.</p></div></li>
+        <li class="rule"><span class="n">2</span><div><h4>Бронь или очередь — обязательно</h4><p>Хотите сейчас — встаньте в онлайн-очередь за 10 минут до приезда. Хотите ко времени — забронируйте слот.</p></div></li>
+        <li><span class="n">3</span><div><h4>Приезжайте по вызову</h4><p>Освободился бокс — первый в очереди получает вызов «Бокс 3 ваш». Бокс держится за вами 10 минут.</p></div></li>
+        <li><span class="n">4</span><div><h4>Мойте и оцените</h4><p>Время считается с момента заезда. Напомним за 10 и 5 минут до конца. После — короткий отзыв.</p></div></li>
+      </ol>
+    </div>
+  </section>
+
+  <main class="L-wrap" style="max-width:1240px;padding-bottom:0">
+    <section id="offers" style="margin-top:clamp(56px,9vw,110px)">
+      <p class="L-label">Спецпредложения моек · реклама</p>
+      <h2 class="L-h2">Скидки и бонусы прямо сейчас</h2>
+      <div class="L-rail" id="offersRail"><span class="muted">Загружаем…</span></div>
+    </section>
+
+    <section id="featured" style="margin-top:clamp(40px,6vw,80px)" hidden>
+      <p class="L-label">Рекомендуем · реклама</p>
+      <div class="L-feat" id="featRail"></div>
+    </section>
+
+    <section style="margin-top:clamp(56px,9vw,110px)" id="quotesSec" hidden>
+      <p class="L-label">Отзывы после посещения</p>
+      <div class="L-quotes" id="quotes"></div>
+    </section>
+  </main>
+
+  <section class="L-block lilac" id="biz">
+    <div class="L-wrap L-biz">
+      <div>
+        <p class="L-label">Для владельцев моек</p>
+        <h2 class="L-h2">Заполните пустые часы и поднимитесь выше в поиске</h2>
+        <ul>
+          <li>Бесплатный пилот 30 дней: страница мойки, онлайн-очередь и бронь</li>
+          <li>Место выше в списке и на главной — отмечается как «Реклама»</li>
+          <li>Спецпредложения для тихих часов</li>
+          <li>Рейтинг не продаётся: он считается только по отзывам после посещения</li>
+        </ul>
+        <a class="btn primary" href="business.html">Тарифы и заявка</a>
+      </div>
+      <div class="L-why" style="grid-template-columns:1fr">
+        <article style="background:var(--cream);min-height:auto"><div><h3 style="margin-top:0">5 900 ₸ / мес</h3><p>Базовое размещение: страница мойки, очередь, бронь, кабинет администратора.</p></div></article>
+        <article style="background:var(--sun);min-height:auto"><div><h3 style="margin-top:0">от 9 900 ₸ / нед</h3><p>Продвижение: спецпредложение на главной, место выше в списке, баннер.</p></div></article>
+      </div>
+    </div>
+  </section>
+
+  <section class="L-cta L-wrap">
+    <h2 class="L-h2">Где сейчас свободно? Посмотрите за 5 секунд</h2>
+    <a class="btn hot" href="app.html">Открыть карту моек</a>
+  </section>
+
+  <footer class="site-foot">
+    <div class="in">
+      <div><div class="foot-brand">блик</div><p class="small" style="margin-top:14px">Мойка без очереди · Астана</p></div>
+      <nav><a href="app.html">Мойки</a><a href="app.html#/my">Моя запись</a><a href="business.html">Для моек</a><a href="admin.html">Кабинет мойки</a></nav>
+      <div class="small"><span>Прогноз ожидания — оценка, не гарантия</span><span>Реклама и спецпредложения всегда помечены</span><span>Карта © OpenStreetMap</span><span>Пилотная версия</span></div>
+    </div>
+  </footer>
+  <script src="common.js"></script>
+  <script src="landing.js"></script>
+</body>
+</html>

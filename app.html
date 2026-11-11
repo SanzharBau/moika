@@ -1,0 +1,45 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#0F3C65">
+  <title>Мойки Астаны — Блик</title>
+  <link rel="icon" href="logo-mark.svg" type="image/svg+xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Unbounded:wght@400;500;600&display=swap">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header class="top">
+    <div class="top-left"><button class="back" id="back" hidden aria-label="Назад">←</button></div>
+    <a class="brand" href="index.html"><img src="logo-mark.svg" alt="">блик</a>
+    <div class="top-right"><button id="myBtn" class="link-btn" hidden>Моя запись</button></div>
+  </header>
+  <main id="app"></main>
+  <footer class="site-foot">
+    <div class="in">
+      <div><div class="foot-brand">блик</div><p class="small" style="margin-top:14px">Мойка без очереди · Астана</p></div>
+      <nav>
+        <a href="#/" onclick="return goView('list')">Мойки</a>
+        <a href="#/" onclick="return goView('map')">Карта</a>
+        <a href="#/my">Моя запись</a>
+        <a href="business.html">Для моек</a>
+      </nav>
+      <div class="small">
+        <span>Заезд в бокс — только по брони или очереди</span>
+        <span>Реклама и спецпредложения всегда помечены</span>
+        <span>Прогноз ожидания — оценка, не гарантия</span>
+        <span>Карта © OpenStreetMap</span>
+      </div>
+    </div>
+  </footer>
+  <div class="mybar" id="mybar" hidden><div class="in"><span id="mybarText"></span><b>Открыть →</b></div></div>
+  <script src="common.js"></script>
+  <script src="map.js"></script>
+  <script src="app.js"></script>
+  <script src="wash.js"></script>
+  <script src="my.js"></script>
+</body>
+</html>

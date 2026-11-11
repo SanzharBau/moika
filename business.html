@@ -1,0 +1,105 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#0F3C65">
+  <title>Блик для моек — размещение и продвижение</title>
+  <link rel="icon" href="logo-mark.svg" type="image/svg+xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Unbounded:wght@400;500;600&display=swap">
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="landing.css">
+  <style>
+    .B-plans { display: grid; gap: 14px; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); }
+    .B-plans article { border-radius: 28px; padding: 26px; background: #fff; display: flex; flex-direction: column; gap: 10px; }
+    .B-plans article.hl { background: var(--sun); }
+    .B-plans .price { font: 600 28px/1 var(--display); letter-spacing: -.03em; }
+    .B-plans .price small { font: 600 14px var(--text); color: var(--mute); }
+    .B-plans h3 { font: 500 20px/1.15 var(--display); color: var(--ink); text-transform: none; letter-spacing: -.02em; margin: 0; }
+    .B-plans ul { margin: 6px 0 0; padding-left: 18px; font-size: 14.5px; }
+    .B-video { position: relative; z-index: 1; max-width: 640px; }
+    @media (min-width: 1000px) { .hero.lilac { display: grid; grid-template-columns: 1.1fr 1fr; gap: 40px; align-items: center; } .B-video { margin-top: 0; } }
+    .B-form { background: #fff; border-radius: 32px; padding: clamp(22px, 4vw, 40px); max-width: 640px; }
+  </style>
+</head>
+<body>
+  <header class="L-nav">
+    <a class="brand" href="index.html"><img src="logo-mark.svg" alt="">блик</a>
+    <nav><a href="index.html#how">Как это работает</a><a href="#plans">Тарифы</a><a href="#rules">Правила рекламы</a><a href="admin.html">Кабинет мойки</a></nav>
+    <a class="btn hot" href="#lead">Оставить заявку</a>
+  </header>
+
+  <main class="L-wrap" style="max-width:1240px;padding-bottom:0">
+    <section class="hero lilac" style="margin-top:10px;padding:clamp(36px,6vw,80px) clamp(24px,4vw,56px)">
+      <div class="hero-in">
+        <p class="kicker">Блик для бизнеса</p>
+        <h1>Больше машин в тихие часы</h1>
+        <p class="lead">Водители видят ваши свободные боксы и встают в очередь заранее. А продвижение поднимает мойку выше в поиске и показывает ваши спецпредложения на главной.</p>
+        <div class="hero-actions"><a class="btn primary" href="#lead">Подключить мойку</a><a class="btn btn-light" href="#plans">Тарифы</a></div>
+      </div>
+      <div class="L-vcard B-video"><video autoplay muted loop playsinline preload="auto" poster="media/bay-rinse.jpg"><source src="media/bay-rinse.mp4" type="video/mp4"></video>
+        <span>Каждый бокс в работе — даже в тихие часы</span></div>
+    </section>
+
+    <section id="plans" style="margin-top:clamp(48px,8vw,100px)">
+      <p class="L-label">Тарифы · тестовые цены пилота</p>
+      <h2 class="L-h2">Сначала размещение, потом продвижение</h2>
+      <div class="B-plans">
+        <article><h3>Базовое размещение</h3><div class="price">5 900 ₸ <small>/ мес за мойку</small></div>
+          <ul><li>Страница мойки с фото, историей и прайсом</li><li>Онлайн-очередь и бронь</li><li>Кабинет администратора</li><li>Отзывы после посещения</li></ul></article>
+        <article><h3>Выше в списке</h3><div class="price">14 900 ₸ <small>/ нед</small></div>
+          <ul><li>Место над обычными мойками в сортировке «Рекомендуем»</li><li>Жёлтая рамка и пометка «Реклама»</li></ul></article>
+        <article class="hl"><h3>Премиум</h3><div class="price">29 900 ₸ <small>/ нед</small></div>
+          <ul><li>Первое место в списке</li><li>Блок «Рекомендуем» на главной</li><li>Спецпредложение включено</li></ul></article>
+        <article><h3>Спецпредложение на главной</h3><div class="price">9 900 ₸ <small>/ нед</small></div>
+          <ul><li>Карточка акции на главной странице и на странице мойки</li><li>Хорошо работает для тихих часов</li></ul></article>
+        <article><h3>Рекламный баннер</h3><div class="price">24 900 ₸ <small>/ нед</small></div>
+          <ul><li>Для автохимии, шиномонтажей, СТО</li><li>Баннер между карточками моек</li></ul></article>
+      </div>
+      <p class="muted" style="margin-top:14px">Первые мойки подключаем на бесплатный пилот на 30 дней. Цены — гипотезы для проверки, их уточним по результатам пилота.</p>
+    </section>
+
+    <section id="rules" style="margin-top:clamp(48px,8vw,100px)">
+      <p class="L-label">Правила рекламы</p>
+      <div class="L-why">
+        <article><div><h3 style="margin-top:0">Всегда помечено</h3><p>Платное место показывается с пометкой «Реклама», спецпредложение — с пометкой «Спецпредложение».</p></div></article>
+        <article><div><h3 style="margin-top:0">Рейтинг не продаётся</h3><p>Оценка считается только по отзывам после подтверждённого посещения. Удалить отзыв за деньги нельзя.</p></div></article>
+        <article><div><h3 style="margin-top:0">Сортировку можно сменить</h3><p>Реклама поднимает мойку только в сортировке «Рекомендуем». В «Ближе», «Дешевле» и «Рейтинг» все мойки равны.</p></div></article>
+      </div>
+    </section>
+
+    <section id="lead" style="margin:clamp(48px,8vw,100px) 0">
+      <p class="L-label">Заявка</p>
+      <h2 class="L-h2">Подключим мойку за один день</h2>
+      <form class="B-form" id="leadForm">
+        <label>Название мойки</label><input name="name" required placeholder="Самомойка «...»">
+        <label>Телефон</label><input name="phone" required inputmode="tel" placeholder="+7 7XX XXX XX XX">
+        <label>Что интересует</label>
+        <select name="product"><option value="base">Базовое размещение</option><option value="top">Выше в списке</option><option value="premium">Премиум</option><option value="offer">Спецпредложение на главной</option><option value="banner">Рекламный баннер</option></select>
+        <label>Комментарий</label><textarea name="comment" rows="3" placeholder="Сколько боксов, есть ли администратор, адрес"></textarea>
+        <p><button class="hot big" type="submit">Отправить заявку</button></p>
+        <p class="muted">Мы перезвоним и расскажем, как подключиться. Номер используем только для связи по заявке.</p>
+      </form>
+    </section>
+  </main>
+
+  <footer class="site-foot">
+    <div class="in">
+      <div><div class="foot-brand">блик</div><p class="small" style="margin-top:14px">Мойка без очереди · Астана</p></div>
+      <nav><a href="index.html">Главная</a><a href="app.html">Мойки</a><a href="admin.html">Кабинет мойки</a></nav>
+      <div class="small"><span>Реклама и спецпредложения всегда помечены</span><span>Пилотная версия</span></div>
+    </div>
+  </footer>
+  <script src="common.js"></script>
+  <script>
+    document.getElementById("leadForm").onsubmit = async e => {
+      e.preventDefault();
+      const f = Object.fromEntries(new FormData(e.target));
+      try { await api("/api/lead", f); e.target.innerHTML = '<h2>Спасибо! Заявка отправлена</h2><p class="muted">Мы свяжемся с вами в ближайшее время.</p>'; }
+      catch (err) { toast(err.message, true); }
+    };
+  </script>
+</body>
+</html>

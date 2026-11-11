@@ -1,0 +1,88 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="noindex">
+  <title>Пульт площадки — Блик</title>
+  <link rel="icon" href="logo-mark.svg" type="image/svg+xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Unbounded:wght@400;500;600&display=swap">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header class="top">
+    <div class="top-left"><a class="brand" href="index.html"><img src="logo-mark.svg" alt="">блик</a></div>
+    <span class="kicker" style="margin:0">Пульт площадки</span>
+    <div class="top-right"><button id="out" class="link-btn" style="border:0;padding:6px 0">Выйти</button></div>
+  </header>
+  <main class="wide" id="app"></main>
+  <script src="common.js"></script>
+  <script>
+    const $app = document.getElementById("app");
+    let pin = sessionStorage.platPin || "", D = null;
+    const call = body => body ? api("/api/platform", body, { "X-Pin": pin }) : api("/api/platform", null, { "X-Pin": pin });
+    const date = ms => ms ? new Date(ms).toLocaleDateString("ru-RU", { day: "numeric", month: "short" }) : "—";
+    document.getElementById("out").onclick = () => { pin = ""; sessionStorage.removeItem("platPin"); login(); };
+
+    function login(msg = "") {
+      $app.innerHTML = `<section class="hero sun hero-sm"><div class="hero-in"><p class="kicker">Только для команды Блика</p><h1>Пульт площадки</h1></div></section>
+        <div class="card" style="max-width:420px">${msg ? `<div class="warn">${esc(msg)}</div>` : ""}
+        <label>PIN площадки</label><input id="pin" type="password"><p><button class="primary big" id="go">Войти</button></p></div>`;
+      document.getElementById("go").onclick = () => { pin = document.getElementById("pin").value; sessionStorage.platPin = pin; load(); };
+    }
+    async function load() { try { D = await call(); draw(); } catch (e) { login(e.message); } }
+    async function act(b) { try { D = await call(b); draw(); toast("Сохранено"); } catch (e) { toast(e.message, true); } }
+
+    function draw() {
+      const tierOpts = sel => Object.entries(D.tiers).map(([k, v]) => `<option value="${k}" ${k === sel ? "selected" : ""}>${v.name}</option>`).join("");
+      const newLeads = D.leads.filter(l => l.status === "new").length;
+      $app.innerHTML = `
+        <section class="hero sun hero-sm"><div class="hero-in"><p class="kicker">Продажа мест</p><h1>Пульт площадки</h1>
+          <p class="lead">Продвигается: <b>${D.washes.filter(w => w.tier !== "none").length}</b> · спецпредложений: <b>${D.washes.filter(w => w.offer).length}</b> · баннеров: <b>${D.ads.length}</b> · новых заявок: <b>${newLeads}</b></p></div></section>
+
+        <div class="card"><h2>Места в списке</h2>
+          <p class="muted">«Выше в списке» и «Премиум» поднимают мойку только в сортировке «Рекомендуем» и всегда помечаются «Реклама». Рейтинг не меняется.</p>
+          <table class="list"><tr><th>Мойка</th><th>Рейтинг</th><th>Сейчас</th><th>Новое место</th></tr>
+          ${D.washes.map(w => `<tr><td><b>${esc(w.name)}</b><div class="muted">${w.type === "self" ? "самомойка" : "с персоналом"}</div></td>
+            <td>★ ${w.rating ?? "—"} <span class="muted">(${w.reviews})</span></td>
+            <td>${D.tiers[w.tier].name}${w.tier !== "none" ? `<div class="muted">до ${date(w.until)}</div>` : ""}</td>
+            <td><div class="row"><select data-tier="${w.id}" style="width:auto">${tierOpts(w.tier)}</select>
+              <input type="number" min="1" max="365" value="7" data-days="${w.id}" style="width:80px"> дн.
+              <button data-promo="${w.id}">Применить</button></div></td></tr>`).join("")}</table></div>
+
+        <div class="card"><h2>Спецпредложения</h2>
+          ${D.washes.map(w => `<div style="padding:12px 0;border-bottom:1px dashed var(--line)"><b>${esc(w.name)}</b>
+            ${w.offer ? `<span class="tag offer">до ${date(w.offer.until)}</span>` : '<span class="muted"> — нет</span>'}
+            <div class="grid2"><div><label>Заголовок</label><input data-ot="${w.id}" value="${esc(w.offer?.title || "")}" placeholder="−20% по будням до 12:00"></div>
+            <div><label>Дней показа (0 — снять)</label><input type="number" data-od="${w.id}" value="${w.offer ? 7 : 0}"></div></div>
+            <label>Описание</label><input data-ox="${w.id}" value="${esc(w.offer?.text || "")}">
+            <p><button data-offer="${w.id}">Сохранить</button></p></div>`).join("")}</div>
+
+        <div class="card"><h2>Рекламные баннеры</h2>
+          ${D.ads.length ? `<table class="list">${D.ads.map(a => `<tr><td><b>${esc(a.title)}</b><div class="muted">${esc(a.advertiser)} · ${esc(a.text)}</div></td><td>до ${date(a.until)}</td>
+            <td><button class="danger" data-addel="${a.id}">Снять</button></td></tr>`).join("")}</table>` : '<p class="muted">Баннеров нет.</p>'}
+          <h3>Новый баннер</h3>
+          <div class="grid2"><div><label>Рекламодатель</label><input id="aAdv"></div><div><label>Дней показа</label><input id="aDays" type="number" value="7"></div></div>
+          <label>Заголовок</label><input id="aTitle"><label>Текст</label><input id="aText"><label>Ссылка (необязательно)</label><input id="aLink" placeholder="https://">
+          <p><button class="primary" id="aAdd">Добавить баннер</button></p></div>
+
+        <div class="card"><h2>Заявки от моек</h2>
+          ${D.leads.length ? `<table class="list"><tr><th>Когда</th><th>Мойка</th><th>Что хотят</th><th></th></tr>${D.leads.map(l => `<tr>
+            <td>${date(l.created)}</td><td><b>${esc(l.name)}</b><div class="muted">${esc(l.phone)}</div></td>
+            <td>${esc(D.products[l.product] || l.product)}<div class="muted">${esc(l.comment)}</div></td>
+            <td>${l.status === "new" ? `<button data-lead="${l.id}">Обработано</button>` : '<span class="muted">обработано</span>'}</td></tr>`).join("")}</table>` : '<p class="muted">Заявок пока нет.</p>'}</div>`;
+
+      $app.querySelectorAll("[data-promo]").forEach(b => b.onclick = () => { const id = b.dataset.promo;
+        act({ action: "promo", wash: id, tier: $app.querySelector(`[data-tier="${id}"]`).value, days: $app.querySelector(`[data-days="${id}"]`).value }); });
+      $app.querySelectorAll("[data-offer]").forEach(b => b.onclick = () => { const id = b.dataset.offer;
+        act({ action: "offer", wash: id, title: $app.querySelector(`[data-ot="${id}"]`).value, text: $app.querySelector(`[data-ox="${id}"]`).value, days: $app.querySelector(`[data-od="${id}"]`).value }); });
+      $app.querySelectorAll("[data-addel]").forEach(b => b.onclick = () => act({ action: "ad_del", id: b.dataset.addel }));
+      $app.querySelectorAll("[data-lead]").forEach(b => b.onclick = () => act({ action: "lead_done", id: b.dataset.lead }));
+      document.getElementById("aAdd").onclick = () => act({ action: "ad_add", advertiser: aAdv.value, title: aTitle.value, text: aText.value, link: aLink.value, days: aDays.value });
+    }
+    pin ? load() : login();
+  </script>
+</body>
+</html>
